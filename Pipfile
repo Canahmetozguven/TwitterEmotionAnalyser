@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+jupyter = "*"
+numpy = "*"
+seaborn = "*"
+pandas-profiling = "*"
+nltk = "*"
+plotly = "*"
+spacy = "*"
+snscrape = "*"
+scikit-learn = "*"
+kaleido = "*"
+streamlit = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
