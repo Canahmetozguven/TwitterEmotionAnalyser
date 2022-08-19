@@ -5,7 +5,7 @@ import sklearn
 import plotly
 import plotly.express as px
 from sklearn.preprocessing import LabelEncoder
-from data_handler import DataCleaner, LabelHandler, DataMerger, DataImporter
+from data_handler import DataCleaner, DataMerger, DataImporter
 st.title('Twitter Emotion Analysis')
 
 

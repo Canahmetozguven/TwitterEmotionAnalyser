@@ -15,6 +15,7 @@ snscrape = "*"
 scikit-learn = "*"
 kaleido = "*"
 streamlit = "*"
+tpot = "*"
 
 [dev-packages]
 

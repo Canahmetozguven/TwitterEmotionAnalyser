@@ -40,18 +40,6 @@ class DataCleaner:
 
 
 
-class LabelHandler:
-    def __init__(self, data):
-        """data: pandas dataframe"""
-
-        self.data = data
-        self.label_encoding()
-
-    def label_encoding(self):
-        """Label encoding for categorical columns"""
-        le = LabelEncoder()
-        self.data["label"] = le.fit_transform(self.data["label"])
-        return self.data
 
     def get_data(self):
         """Return encoded data"""
@@ -75,4 +63,3 @@ class DataMerger:
     def get_data(self):
         """Return merged data"""
         return self.data
-
