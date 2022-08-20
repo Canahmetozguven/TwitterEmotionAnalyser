@@ -1,6 +1,8 @@
 import pandas as pd
 from nltk.corpus import stopwords
 import numpy as np
+import nltk
+nltk.download('stopwords')
 STOPWORDS = stopwords.words('turkish')
 
 
