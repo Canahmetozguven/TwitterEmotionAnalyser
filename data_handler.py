@@ -24,6 +24,7 @@ class DataCleaner:
         self.label_columns = label_columns
         self.clean_data()
         self.label_extraction()
+
     def clean_data(self):
         """Drop unnecessary columns"""
         self.data = self.data.drop_duplicates()
@@ -34,15 +35,9 @@ class DataCleaner:
         self.data[f"{self.label_columns}"] = self.data[f"{self.label_columns}"].str.replace(fr'{self.keyword}', '', regex=True)
         self.data["label"] = self.keyword
         return self.data
+
     def get_data(self):
         """Return cleaned data"""
-        return self.data
-
-
-
-
-    def get_data(self):
-        """Return encoded data"""
         return self.data
 
 

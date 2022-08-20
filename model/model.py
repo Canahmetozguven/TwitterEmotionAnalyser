@@ -1,19 +1,17 @@
-import numpy as np
 import pandas as pd
 from sklearn.feature_selection import SelectFwe, f_classif
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import BernoulliNB
 from sklearn.pipeline import make_pipeline, make_union
-from tpot.builtins import StackingEstimator
 from sklearn.preprocessing import FunctionTransformer, LabelEncoder
 from sklearn.feature_extraction.text import CountVectorizer
 from copy import copy
 from data_handler import DataImporter, DataCleaner, DataMerger
-from machine_learning_data_handler import TextPreprocessor
-
+from model.machine_learning_data_handler import TextPreprocessor
+pd.read_csv("data/mutluluk_1000_df.csv")
 # Data Set
-df_mutluluk = DataImporter(data_url="../data/mutluluk_1000_df.csv").get_data()
-df_depresyon = DataImporter(data_url="../data/depresyon_1000_df.csv").get_data()
+df_mutluluk = DataImporter(data_url="data/mutluluk_1000_df.csv").get_data()
+df_depresyon = DataImporter(data_url="data/depresyon_1000_df.csv").get_data()
 df_mutluluk = DataCleaner(data=df_mutluluk, label_columns="text", keyword="mutluluk").get_data()
 df_depresyon = DataCleaner(data=df_depresyon, label_columns="text", keyword="depresyon").get_data()
 df = DataMerger(data1=df_mutluluk, data2=df_depresyon).get_data()
@@ -36,10 +34,9 @@ exported_pipeline = make_pipeline(
     BernoulliNB(alpha=1.0, fit_prior=True)
 )
 
-exported_pipeline.fit(training_features, training_target)
-results = exported_pipeline.predict(testing_features)
-pred = exported_pipeline.predict(X=vectorizer.transform(["sevinç"]))
-print(pred)
+exported_pipeline.fit(X, y)
+results = exported_pipeline.predict(X)
+
 
 class Predictor:
     def __init__(self, text):
