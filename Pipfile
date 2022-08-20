@@ -17,6 +17,7 @@ kaleido = "*"
 streamlit = "*"
 tpot = "*"
 arrow = "*"
+wordcloud = "*"
 
 [dev-packages]
 
