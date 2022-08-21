@@ -8,11 +8,10 @@ from word_cloud.wordcloudmaker import WorldCloudMaker
 import matplotlib.pyplot as plt
 
 st.title('Twitter Emotion Analysis')
-user_name = str(st.text_input('Enter a Twitter user name:', placeholder="Enter a Twitter user name"))
+user_name = str(st.text_input('Enter a Twitter user name:', placeholder="Enter a Twitter user name")).lower()
 if user_name.startswith('@'):
     user_name = user_name[1:]
 elif user_name:
-
     @st.cache(allow_output_mutation=True, suppress_st_warning=True)
     def chacher():
         df = TwitterUserScraper(user_name).get_tweets_df()
@@ -33,10 +32,13 @@ elif user_name:
         st.subheader('Raw data')
         st.dataframe(df.drop("quoted_tweet", axis=1))
 
+
     val = df.label.value_counts()
-    st.markdown('**When people send tweets about happiness or depression?**')
+    st.markdown('**This is how much you have tweets sad and happy.**')
     st.plotly_chart(px.bar(data_frame=val, x=val.index, y=val.values,
-                           labels={'index': 'Label', 'y': 'Count'}))
+                               labels={'index': 'Label', 'y': 'Count'}))
+
+    st.markdown("**This is a word-cloud from your tweets!**")
     # Displaying word cloud
     st.set_option('deprecation.showPyplotGlobalUse', False)
     fig = plt.imshow(WorldCloudMaker(df).get_wordcloud(), interpolation="bilinear")
