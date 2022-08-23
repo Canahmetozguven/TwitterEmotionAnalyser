@@ -52,7 +52,8 @@ class DataMerger:
     def merge_data(self):
         """Merge two dataframes"""
         self.data = pd.concat([self.data1, self.data2])
-        self.data["datetime"] = pd.to_datetime(self.data['datetime'])
+        self.data.drop(self.data[self.data["datetime"]=="bursacom16"].index, inplace=True)
+        self.data["datetime"] = pd.to_datetime(self.data['datetime'], utc=True)
         return self.data
 
     def get_data(self):

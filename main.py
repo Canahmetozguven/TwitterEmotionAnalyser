@@ -13,7 +13,7 @@ if user_name.startswith('@'):
     user_name = user_name[1:]
 elif user_name:
     @st.cache(allow_output_mutation=True, suppress_st_warning=True)
-    def chacher():
+    def Data_Loading():
         df = TwitterUserScraper(user_name).get_tweets_df()
         df["pred"] = df[["text"]].apply(lambda x: Predictor(x["text"]).get_prediction(), axis=1)
         df["label"] = df["pred"].apply(lambda x: "positive" if x == 1 else "negative")
@@ -21,8 +21,8 @@ elif user_name:
 
 
     data_load_state = st.text('Loading data...')
-    df = chacher()
-    data_load_state.text("Done! (using st.cache)")
+    df = Data_Loading()
+    data_load_state.text("Magic is done!")
 
     if df.pred.mean() < 0.5:
         st.write("The user is not feeling happy.")
