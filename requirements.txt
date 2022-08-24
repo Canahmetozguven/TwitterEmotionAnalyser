@@ -8,6 +8,7 @@ snscrape~=0.4.3.20220106
 nltk~=3.7
 
 
+
 wordcloud~=1.8.2.2
 pillow~=9.2.0
 matplotlib~=3.5.3

@@ -22,6 +22,9 @@ elif user_name:
 
     data_load_state = st.text('Loading data...')
     df = Data_Loading()
+    if ValueError:
+        data_load_state.error('User not found please enter a valid user name')
+        st.stop()
     data_load_state.text("Magic is done!")
 
     if df.pred.mean() < 0.5:
