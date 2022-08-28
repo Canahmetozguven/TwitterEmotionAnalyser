@@ -6,6 +6,7 @@ from model.model import Predictor
 import wordcloud
 from word_cloud.wordcloudmaker import WorldCloudMaker
 import matplotlib.pyplot as plt
+import time
 
 st.title('Twitter Emotion Analysis')
 user_name = str(st.text_input('Enter a Twitter user name:', placeholder="Enter a Twitter user name")).lower()
@@ -25,6 +26,7 @@ if user_name:
 
     data_load_state = st.text('Loading data...')
     df = Data_Loading()
+    time.sleep(1)
     if df["text"].count() == 0:
         data_load_state.error('User not found please enter a valid user name')
         st.stop()
