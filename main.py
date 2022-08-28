@@ -58,7 +58,7 @@ if user_name:
     st.markdown('**This is a graph of tweets/hours.**')
     pivot_t = pd.pivot_table(df, values="text", columns=["label"], aggfunc="count", index=df.datetime.dt.hour)
     tweets_hour = px.bar(data_frame=pivot_t, x=pivot_t.index,
-                         y=["positive", "negative"],
+                         y=["Positive", "Negative"],
                          labels={
                              "datetime": "Hour",
                              "value": "Count",
