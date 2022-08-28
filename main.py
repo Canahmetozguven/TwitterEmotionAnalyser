@@ -20,7 +20,7 @@ if user_name:
     def Data_Loading():
         data = TwitterUserScraper(user_name).get_tweets_df()
         data["pred"] = data[["text"]].apply(lambda x: Predictor(x["text"]).get_prediction(), axis=1)
-        data["label"] = data["pred"].apply(lambda x: "positive" if x == 1 else "negative")
+        data["label"] = data["pred"].apply(lambda x: "Positive" if x == 1 else "Negative")
         return data
 
 
